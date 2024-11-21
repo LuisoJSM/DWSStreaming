@@ -1,14 +1,18 @@
-/* Estilos para el nav */
+/* Menú de navegación */
 nav {
     background-color: #333;
-    padding: 10px;
-    text-align: center;
+    position: fixed; /* Mantiene el menú fijo en la parte superior */
+    width: 100%;     /* Ocupa todo el ancho */
+    top: 0;          /* Fijado en la parte superior */
+    z-index: 1000;   /* Asegura que el menú esté sobre el contenido */
+    padding: 10px 0; /* Espaciado interno */
 }
 
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    text-align: center; /* Centra los elementos del menú */
 }
 
 nav ul li {
@@ -24,4 +28,10 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline;
+}
+
+/* Contenedor principal */
+.container {
+    margin-top: 70px; /* Ajusta el margen según la altura del menú */
+    padding: 20px;    /* Agrega un poco de espacio interno al contenido */
 }

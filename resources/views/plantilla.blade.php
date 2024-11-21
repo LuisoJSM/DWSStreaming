@@ -8,15 +8,12 @@
     <title>@yield('titulo')</title>
 </head>
 <body>
-
-    @include('layouts.partials.nav')
-    
-   @yield('contenido')
-
-   @section('contenido_principal')
-       
-   @endsection
-
-
+    <nav>
+        <!-- MENÚ DE NAVEGACIÓN -->
+        @include('layouts.partials.nav')
+    </nav>
+    <div class="container">
+        @yield('contenido')
+    </div>
 </body>
 </html>
