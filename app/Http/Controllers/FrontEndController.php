@@ -21,33 +21,24 @@ class  FrontEndController extends Controller
     }
 
 
-
-   
-
-
-    public function escribirCatalogo() {
-        $catalogos = array(
-            array(
-                'Titulo' => 'Carrera popular de San Silvestre',
-                'estreno' => 1000,
-                'director' => '31/12/2024',
-                
-            ),
-            array(
-                'Titulo' => 'Carrera pop77765g Silvestre',
-                'estreno' => 2233,
-                'director' => '31/12/2024',
-            ),
-            array(
-                'Titulo' => 'Carrezxczxzcn Silvestre',
-                'estreno' => 34,
-                'director' => 'xzc4',
-            ),
-        );
     
-        return view('catalogo', compact('catalogos')); // Asegúrate de que la vista se llame correctamente
+    public function admin()
+    {
+        return view('admin');  // Esto cargará la vista resources/views/admin.blade.php
     }
-    
+
+
+    public function mostrarCatalogo()
+{
+    // Leer los datos del archivo JSON
+    $filePath = storage_path('app/catalogos.json');
+    $catalogos = file_exists($filePath) ? json_decode(file_get_contents($filePath), true) : [];
+
+    return view('catalogo', compact('catalogos'));
+}
+
+
+
 
 
 

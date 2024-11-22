@@ -6,59 +6,37 @@ use Illuminate\Http\Request;
 
 class BackEndController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function mostrarAdmin()
     {
-        //
+        // Leer los datos del archivo JSON
+        $filePath = storage_path('app/catalogos.json');
+        $catalogos = file_exists($filePath) ? json_decode(file_get_contents($filePath), true) : [];
+
+        return view('admin', compact('catalogos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function agregarEventoCatalogo(Request $request)
     {
-        //
-    }
+        // Validar los datos del formulario
+        $validatedData = $request->validate([
+            'Titulo' => 'required|string|max:255',
+            'estreno' => 'required|integer',
+            'director' => 'required|string|max:255',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Ruta del archivo JSON
+        $filePath = storage_path('app/catalogos.json');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        // Leer el contenido actual del JSON
+        $catalogos = file_exists($filePath) ? json_decode(file_get_contents($filePath), true) : [];
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // Añadir el nuevo evento al array
+        $catalogos[] = $validatedData;
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        // Guardar el array actualizado en el archivo JSON
+        file_put_contents($filePath, json_encode($catalogos, JSON_PRETTY_PRINT));
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // Redirigir a la página de admin con un mensaje de éxito
+        return redirect()->route('mostrarAdmin')->with('success', 'Evento añadido con éxito.');
     }
 }
