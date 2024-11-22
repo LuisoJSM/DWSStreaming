@@ -22,40 +22,32 @@ class  FrontEndController extends Controller
 
 
 
-    public function indexTopMenu() {
-        return view('index');
-    }
+   
 
 
-    // public function catalogoTopMenu() {
-    //     return view('top_menu/catalogo');
-    // }
-
-
-
-    public function catalogoTopMenu() {
-        $catalogo = array(
+    public function escribirCatalogo() {
+        $catalogos = array(
             array(
-            'evento_nombre' => 'Carrera popular de San Silvestre',
-            'evento_distancia' => 1000,
-            'evento_fecha' => '31/12/2024',
-            'evento_hora' => '10:00',
-        ),
-        $catalogo = array(
-            'evento_nombre' => 'Barbudico Trail',
-            'evento_distancia' => 1000,
-            'evento_fecha' => '23/11/2024',
-            'evento_hora' => '10:00',
-        ),
-        $catalogo = array(
-            'evento_nombre' => 'Barbudo sky trail',
-            'evento_distancia' => 20000,
-            'evento_fecha' => '24/11/2024',
-            'evento_hora' => '8:00',
-        ));
-        return view('top_menu/catalogo', compact('catalogo'));
+                'Titulo' => 'Carrera popular de San Silvestre',
+                'estreno' => 1000,
+                'director' => '31/12/2024',
+                
+            ),
+            array(
+                'Titulo' => 'Carrera pop77765g Silvestre',
+                'estreno' => 2233,
+                'director' => '31/12/2024',
+            ),
+            array(
+                'Titulo' => 'Carrezxczxzcn Silvestre',
+                'estreno' => 34,
+                'director' => 'xzc4',
+            ),
+        );
+    
+        return view('catalogo', compact('catalogos')); // Asegúrate de que la vista se llame correctamente
     }
-
+    
 
 
 
