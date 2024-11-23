@@ -1,14 +1,22 @@
 @extends('plantilla')
 @section('titulo', 'Administrar Catálogo')
 @section('contenido')
+
+
+    @if (session('mensaje'))
+        <div style="color: green;">
+            <p>{{ session('mensaje') }}</p>
+        </div>
+    @endif
+
     <h1>Administrar Catálogo de Eventos</h1>
 
     <!-- Mostrar los eventos actuales -->
     <h2>Eventos Actuales</h2>
     @forelse ($catalogos as $catalogo)
         <p>
-            Evento: {{ $catalogo['Titulo'] }}, 
-            Estreno: {{ $catalogo['estreno'] }}, 
+            Evento: {{ $catalogo['Titulo'] }},
+            Estreno: {{ $catalogo['estreno'] }},
             Director: {{ $catalogo['director'] }}
         </p>
     @empty

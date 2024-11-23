@@ -39,4 +39,25 @@ class BackEndController extends Controller
         // Redirigir a la página de admin con un mensaje de éxito
         return redirect()->route('mostrarAdmin')->with('success', 'Evento añadido con éxito.');
     }
+
+
+    //Funcion para procesar los datos de inicio de sesión del admin
+
+    public function procesarDatos(Request $request)
+    {
+        // Validar los datos del formulario
+        $validated = $request->validate([
+            'usuario' => 'required|string|max:255',
+            'clave' => 'required|string|max:255',
+        ]);
+
+        // Comprobar si el usuario y la clave son correctos
+        if ($validated['usuario'] === 'admin' && $validated['clave'] === '1234') {
+            // Redirigir a la página de administración usando el nombre de la ruta
+            return redirect()->route('mostrarAdmin')->with('mensaje', 'Bienvenido, administrador');
+        }
+
+        // Si no son correctos, redirigir de vuelta a la página principal con un mensaje de error
+        return redirect('/')->withErrors(['error' => 'Clave o usuario incorrecto']);
+    }
 }

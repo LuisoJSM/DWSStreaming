@@ -19,3 +19,7 @@ Route::get('/catalogo', [App\Http\Controllers\FrontEndController::class, 'mostra
 // Rutas de administración
 Route::get('/admin', [BackEndController::class, 'mostrarAdmin'])->name('mostrarAdmin');
 Route::post('/admin/agregar', [BackEndController::class, 'agregarEventoCatalogo'])->name('agregarEventoCatalogo');
+
+
+//Ruta para procesar los datos de usuario
+Route::post('/procesar-datos', [BackEndController::class, 'procesarDatos']);
