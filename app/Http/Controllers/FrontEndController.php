@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class  FrontEndController extends Controller
 {
-    
+
      // Método para la vista 'index'
      public function index()
      {
@@ -21,7 +21,7 @@ class  FrontEndController extends Controller
     }
 
 
-   
+
 
     public function mostrarCatalogo()
 {

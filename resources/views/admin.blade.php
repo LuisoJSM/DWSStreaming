@@ -9,10 +9,10 @@
         </div>
     @endif
 
-    <h1>Administrar Catálogo de Eventos</h1>
+    <h1>Administrar Catálogo de Películas</h1>
 
     <!-- Mostrar los eventos actuales -->
-    <h2>Eventos Actuales</h2>
+    <h2>Catálogo de películas</h2>
     @forelse ($catalogos as $catalogo)
         <p>
             Evento: {{ $catalogo['Titulo'] }},
@@ -20,7 +20,7 @@
             Director: {{ $catalogo['director'] }}
         </p>
     @empty
-        <p>No hay eventos en el catálogo.</p>
+        <p>No hay películas en el catálogo.</p>
     @endforelse
 
     <!-- Formulario para añadir nuevos eventos -->
