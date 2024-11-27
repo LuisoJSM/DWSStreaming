@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AgregarEventoRequest;
+use App\Http\Requests\ProcesarDatosRequest;
 use Illuminate\Http\Request;
 
 class BackEndController extends Controller
 {
+    /**
+     * Muestra la página de administración con los catálogos cargados desde un archivo JSON.
+     */
     public function mostrarAdmin()
     {
         // Leer los datos del archivo JSON
@@ -15,14 +20,13 @@ class BackEndController extends Controller
         return view('admin', compact('catalogos'));
     }
 
-    public function agregarEventoCatalogo(Request $request)
+    /**
+     * Agrega un evento al catálogo, validando los datos a través de la clase AgregarEventoRequest.
+     */
+    public function agregarEventoCatalogo(AgregarEventoRequest $request)
     {
-        // Validar los datos del formulario
-        $validatedData = $request->validate([
-            'Titulo' => 'required|string|max:255',
-            'estreno' => 'required|integer',
-            'director' => 'required|string|max:255',
-        ]);
+        // Laravel ya ha validado los datos con AgregarEventoRequest
+        $validatedData = $request->validated();
 
         // Ruta del archivo JSON
         $filePath = storage_path('app/catalogos.json');
@@ -40,16 +44,13 @@ class BackEndController extends Controller
         return redirect()->route('mostrarAdmin')->with('success', 'Evento añadido con éxito.');
     }
 
-
-    //Funcion para procesar los datos de inicio de sesión del admin
-
-    public function procesarDatos(Request $request)
+    /**
+     * Procesa los datos del formulario de inicio de sesión del administrador, validándolos con ProcesarDatosRequest.
+     */
+    public function procesarDatos(ProcesarDatosRequest $request)
     {
-        // Validar los datos del formulario
-        $validated = $request->validate([
-            'usuario' => 'required|string|max:255',
-            'clave' => 'required|string|max:255',
-        ]);
+        // Laravel ya ha validado los datos con ProcesarDatosRequest
+        $validated = $request->validated();
 
         // Comprobar si el usuario y la clave son correctos
         if ($validated['usuario'] === 'admin' && $validated['clave'] === '1234') {

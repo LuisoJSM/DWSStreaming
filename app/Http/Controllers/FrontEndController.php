@@ -21,12 +21,7 @@ class  FrontEndController extends Controller
     }
 
 
-    
-    public function admin()
-    {
-        return view('admin');  // Esto cargará la vista resources/views/admin.blade.php
-    }
-
+   
 
     public function mostrarCatalogo()
 {
