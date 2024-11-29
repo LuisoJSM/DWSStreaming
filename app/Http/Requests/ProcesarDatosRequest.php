@@ -6,16 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProcesarDatosRequest extends FormRequest
 {
+   
     /**
-     * Determina si el usuario está autorizado para hacer esta solicitud.
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Define las reglas de validación.
+     * Reglas de validación del formulario
      */
     public function rules()
     {
@@ -26,7 +19,8 @@ class ProcesarDatosRequest extends FormRequest
     }
 
     /**
-     * Personaliza los mensajes de error.
+     * Personaliza los mensajes de error si no validan bien
+     * 
      */
     public function messages()
     {

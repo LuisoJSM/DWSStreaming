@@ -3,14 +3,15 @@
 
 
 @section('contenido')
+    <!-- Bucle forelse para leer las películas almacenadas -->
 
 @forelse ($catalogos as $catalogo)
     <p> 
-        Evento: {{ $catalogo['Titulo'] }}, 
-        Distancia: {{ $catalogo['estreno'] }}, 
-        Fecha: {{ $catalogo['director'] }}, 
+        Título: {{ $catalogo['Titulo'] }}, 
+        Año estreno: {{ $catalogo['estreno'] }}, 
+        Director: {{ $catalogo['director'] }}, 
     </p>
 @empty
-    <p>No events</p>
+    <p>No hay películas para mostar</p>
 @endforelse
 @endsection

@@ -3,6 +3,7 @@
 @section('contenido')
 
 
+<!-- Mensaje si alguien ha accedido a la vista de admin como administrador -->
     @if (session('mensaje'))
         <div style="color: green;">
             <p>{{ session('mensaje') }}</p>
@@ -11,19 +12,19 @@
 
     <h1>Administrar Catálogo de Películas</h1>
 
-    <!-- Mostrar los eventos actuales -->
+    <!-- Bucle forelse para leer las películas almacenadas -->
     <h2>Catálogo de películas</h2>
     @forelse ($catalogos as $catalogo)
         <p>
-            Evento: {{ $catalogo['Titulo'] }},
-            Estreno: {{ $catalogo['estreno'] }},
+            Título: {{ $catalogo['Titulo'] }},
+            Año de estreno: {{ $catalogo['estreno'] }},
             Director: {{ $catalogo['director'] }}
         </p>
     @empty
         <p>No hay películas en el catálogo.</p>
     @endforelse
 
-    <!-- Formulario para añadir nuevos eventos -->
+    <!-- Este es el formulario para añadir nuevos eventos -->
     <h2>Añadir nuevo evento</h2>
     <form method="POST" action="{{ route('agregarEventoCatalogo') }}">
         @csrf

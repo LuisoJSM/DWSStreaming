@@ -6,16 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AgregarEventoRequest extends FormRequest
 {
+  
     /**
-     * Determina si el usuario está autorizado para hacer esta solicitud.
-     */
-    public function authorize()
-    {
-        return true; // Cambiar a false si quieres restringir el acceso.
-    }
-
-    /**
-     * Define las reglas de validación.
+     * Reglas de validación del formulario
      */
     public function rules()
     {
@@ -27,7 +20,7 @@ class AgregarEventoRequest extends FormRequest
     }
 
     /**
-     * Personaliza los mensajes de error.
+     * Mensajes de error en la validación del formulario del admin
      */
     public function messages()
     {
