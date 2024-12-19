@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>a
+    <title>Admin</title>
 </head>
 
 <body>
@@ -18,33 +18,6 @@
         @if (session('success'))
             <p style="color: green;">{{ session('success') }}</p>
         @endif
-
-
-        <h2>Agregar Cliente</h2>
-        <form action="{{ route('agregarCliente') }}" method="POST">
-            @csrf
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
-            <div>
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" required>
-            </div>
-            <div>
-                <label for="edad">Edad:</label>
-                <input type="number" id="edad" name="edad" required>
-
-            </div>
-            <button type="submit">Agregar Cliente</button>
-        </form>
-
-
-       
-
-
-        <br>
-        <br>
 
 
 
@@ -66,7 +39,7 @@
             </div>
             <button type="submit">Agregar Película</button>
         </form>
-
+        {{-- 
         <h2>Lista de Películas</h2>
         @if ($peliculas->isEmpty())
             <p>No hay películas registradas.</p>
@@ -89,7 +62,12 @@
                     @endforeach
                 </tbody>
             </table>
-        @endif
+        @endif --}}
+
+
+        <button> <a href="{{ route('listaPeliculas') }}">Ver lista de Peliculas</a></button>
+
+
     </main>
 </body>
 
