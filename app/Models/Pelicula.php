@@ -9,10 +9,12 @@ class Pelicula extends Model
 {
     use HasFactory;
 
-    // Modelo pelicula con sus correspondientes atributos
-    protected $fillable = [
-        'titulo',
-        'director',
-        'anio_estreno',
-    ];
+    // Campos permitidos para asignación masiva
+    protected $fillable = ['titulo', 'anio_estreno', 'director_id'];
+
+    // Relación: una película pertenece a un director
+    public function director()
+    {
+        return $this->belongsTo(Director::class); // Relación inversa (muchas películas pertenecen a un director)
+    }
 }

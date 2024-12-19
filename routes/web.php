@@ -23,3 +23,20 @@ Route::get('admin/lista-clientes', [ClienteController::class, 'listaClientes'])-
 
 
 Route::get('admin/gestion-peliculas', [PeliculasController::class, 'listaPeliculas'])->name('listaPeliculas');
+
+
+//Nuevas rutas
+
+
+
+// Ruta para mostrar el formulario de agregar película.
+Route::get('/peliculas/agregar', [PeliculasController::class, 'mostrarFormularioAgregarPelicula'])
+    ->name('mostrarFormularioAgregarPelicula');
+
+// Ruta para procesar el formulario de agregar película.
+Route::post('/peliculas/agregar', [PeliculasController::class, 'agregarPelicula'])
+    ->name('agregarPelicula');
+
+// Ruta para mostrar la lista de películas.
+Route::get('/peliculas', [PeliculasController::class, 'listaPeliculas'])
+    ->name('listaPeliculas');
