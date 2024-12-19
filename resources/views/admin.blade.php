@@ -40,6 +40,9 @@
         </form>
 
 
+        <a href="{{ route('listaClientes') }}">Ver lista de Clientes</a>
+
+
 <br>
 <br>
 

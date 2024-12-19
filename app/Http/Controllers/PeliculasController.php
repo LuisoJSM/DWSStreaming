@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-class ClienteController extends Controller
+class PeliculasController extends Controller
 {
-    public function listaClientes()
+    
+//Función para listar las películas
+ public function listaPeliculas()
     {
         // Consultar los clientes desde la tabla "cliente"
-        $clientes = DB::table('clientes')->get();
+        $peliculas = DB::table('peliculas')->get();
 
         // Retornar la vista 'lista-clientes' con los datos de los clientes
-        return view('lista-clientes', ['clientes' => $clientes]);
+        return view('lista-peliculas', ['peliculas' => $peliculas]);
     }
+
 
 
 }
