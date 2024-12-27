@@ -43,5 +43,16 @@ Route::get('admin/gestion-peliculas', [PeliculasController::class, 'adminPelicul
 //Ruta que devuelve la vista lista-peliculas
 Route::get('admin/gestion-peliculas/lista-peliculas', [PeliculasController::class, 'listaPeliculas'])->name('listaPeliculas');
 
-
 Route::post('admin/gestion-peliculas', [PeliculasController::class, 'agregarPelicula'])->name('agregarPelicula');
+
+
+
+
+//Rutas de la carpeta CLIENTES y todo lo que tiene que ver con ella
+
+Route::get('admin/gestion-clientes', [ClienteController::class, 'adminClientes'])->name('adminClientes');
+
+//Devuelve la vista de lista-clientes
+Route::get('admin/gestion-clientes/lista-clientes', [ClienteController::class,'listaClientes'])->name('listaClientes');
+
+Route::post('admin/gestion-clientes', [ClienteController::class, 'agregarCliente'])->name('agregarCliente');

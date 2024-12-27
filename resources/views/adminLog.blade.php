@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    @include('layouts.nav')
+    @include('layouts.navadmin')
 
     <h1>Vista de admin LOGUEADO</h1>
     @if (session('success'))
@@ -22,7 +22,7 @@
 
     <div><a href="{{ route('adminPeliculas') }}">Ir a la administración de Peliculas</a></div>
 
-
+    <div><a href="{{ route('adminClientes') }}">Ir a la administración de Clientes</a></div>
 
 </body>
 

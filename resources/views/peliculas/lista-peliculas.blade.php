@@ -28,7 +28,9 @@
 
 <body>
     <h1>Lista de Películas</h1>
-    <p><a href="{{ route('adminPeliculas') }}">Volver a la página de Administración de películas</a></p>
+    
+    @include('layouts.navadmin')
+    
     <table>
         <thead>
             <tr>
@@ -53,6 +55,10 @@
             @endforelse
         </tbody>
     </table>
+
+
+    <p><a href="{{ route('adminPeliculas') }}">Volver a la página de Administración de películas</a></p>
+
 </body>
 
 </html>

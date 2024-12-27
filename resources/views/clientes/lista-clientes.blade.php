@@ -23,6 +23,7 @@
 </head>
 <body>
     <h1>Lista de Clientes</h1>
+    @include('layouts.navadmin')
     <table>
         <thead>
             <tr>
@@ -47,5 +48,6 @@
             @endforelse
         </tbody>
     </table>
+    <p><a href="{{ route('adminClientes') }}">Volver a la página de Administración de Clientes</a></p>
 </body>
 </html>

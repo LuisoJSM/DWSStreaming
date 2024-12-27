@@ -10,8 +10,9 @@
 <body>
 
 
-    @include('layouts.nav')
-
+   
+    
+    @include('layouts.navadmin')
 
     <main>
         <h1>Vista de admin</h1>

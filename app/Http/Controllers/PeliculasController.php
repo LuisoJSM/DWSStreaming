@@ -23,11 +23,11 @@ class PeliculasController extends Controller
     //Función para listar las películas
     public function listaPeliculas()
     {
-        // Consultar los clientes desde la tabla "cliente"
+        // Consultar las peliculas desde la tabla "cliente"
         $peliculas = DB::table('peliculas')->get();
 
-        // Retornar la vista 'lista-clientes' con los datos de los clientes
-        return view('lista-peliculas', ['peliculas' => $peliculas]);
+        // Retornar la vista 'lista-peliculas' con los datos de las peliculas
+        return view('peliculas.lista-peliculas', ['peliculas' => $peliculas]);
     }
 
 
