@@ -28,7 +28,6 @@ Route::get('/admin-logueado', [AdminController::class, 'adminLog'])->name('admin
 
 Route::post('/admin/nuevocliente', [AdminController::class, 'agregarCliente'])->name('agregarCliente');
 
-Route::get('admin/lista-clientes', [ClienteController::class, 'listaClientes'])->name('listaClientes');
 
 
 
@@ -53,6 +52,8 @@ Route::post('admin/gestion-peliculas', [PeliculasController::class, 'agregarPeli
 Route::get('admin/gestion-clientes', [ClienteController::class, 'adminClientes'])->name('adminClientes');
 
 //Devuelve la vista de lista-clientes
-Route::get('admin/gestion-clientes/lista-clientes', [ClienteController::class,'listaClientes'])->name('listaClientes');
+Route::get('admin/gestion-clientes/lista-clientes', [ClienteController::class, 'listaClientes'])->name('listaClientes');
 
 Route::post('admin/gestion-clientes', [ClienteController::class, 'agregarCliente'])->name('agregarCliente');
+
+Route::get('admin/lista-clientes', [ClienteController::class, 'listaClientes'])->name('listaClientes');

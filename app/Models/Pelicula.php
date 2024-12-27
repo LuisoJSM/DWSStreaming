@@ -9,10 +9,16 @@ class Pelicula extends Model
 {
     use HasFactory;
 
-    // Modelo pelicula con sus correspondientes atributos
+    // Atributos que pueden ser asignados masivamente
     protected $fillable = [
         'titulo',
-        'director',
+        'director_id', // Ahora usamos director_id en lugar de director
         'anio_estreno',
     ];
+
+    // Relación con el modelo Director
+    public function director()
+    {
+        return $this->belongsTo(Director::class, 'director_id');
+    }
 }

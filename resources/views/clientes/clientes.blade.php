@@ -10,7 +10,7 @@
 <body>
 
 
-   
+
     @include('layouts.navadmin')
 
     <main>
@@ -29,8 +29,8 @@
                 <input type="text" id="nombre" name="nombre" required>
             </div>
             <div>
-                <label for="director">Apellidos:</label>
-                <input type="text" id="apellidos" name="apellidos" required>
+                <label for="director">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required>
             </div>
             <div>
                 <label for="anio_estreno">Edad:</label>
@@ -44,4 +44,3 @@
 
     </main>
 </body>
-

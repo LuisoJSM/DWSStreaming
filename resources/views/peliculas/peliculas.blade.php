@@ -10,8 +10,8 @@
 <body>
 
 
-   
-    
+
+
     @include('layouts.navadmin')
 
     <main>
@@ -22,7 +22,35 @@
 
 
 
+
         <h2>Agregar Película</h2>
+        <form action="{{ route('agregarPelicula') }}" method="POST">
+            @csrf
+            <div>
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+            </div>
+            <div>
+                <label for="nombre_director">Nombre del Director:</label>
+                <input type="text" id="nombre_director" name="nombre_director" required>
+            </div>
+            <div>
+                <label for="apellido_director">Apellido del Director:</label>
+                <input type="text" id="apellido_director" name="apellido_director" required>
+            </div>
+            <div>
+                <label for="anio_estreno">Año de estreno:</label>
+                <input type="number" id="anio_estreno" name="anio_estreno" required>
+            </div>
+            <button type="submit">Agregar Película</button>
+        </form>
+
+
+
+
+
+
+        {{-- <h2>Agregar Película</h2>
         <form action="{{ route('agregarPelicula') }}" method="POST">
             @csrf
             <div>
@@ -39,7 +67,7 @@
 
             </div>
             <button type="submit">Agregar Película</button>
-        </form>
+        </form> --}}
         {{-- 
         <h2>Lista de Películas</h2>
         @if ($peliculas->isEmpty())
