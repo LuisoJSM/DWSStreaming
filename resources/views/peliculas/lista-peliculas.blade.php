@@ -24,13 +24,15 @@
             background-color: #f4f4f4;
         }
     </style>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+
 </head>
 
 <body>
     <h1>Lista de Películas</h1>
-    
+
     @include('layouts.navadmin')
-    
+
     <table>
         <thead>
             <tr>

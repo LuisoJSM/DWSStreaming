@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+
 </head>
 
 <body>
@@ -68,7 +70,7 @@
             </div>
             <button type="submit">Agregar Película</button>
         </form> --}}
-        {{-- 
+        {{--
         <h2>Lista de Películas</h2>
         @if ($peliculas->isEmpty())
             <p>No hay películas registradas.</p>
