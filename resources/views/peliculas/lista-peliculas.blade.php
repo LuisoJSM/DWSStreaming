@@ -44,17 +44,23 @@
         </thead>
         <tbody>
             @forelse ($peliculas as $pelicula)
-                <tr>
-                    <td>{{ $pelicula->id }}</td>
-                    <td>{{ $pelicula->titulo }}</td>
-                    <td>{{ $pelicula->director }}</td>
-                    <td>{{ $pelicula->anio_estreno }}</td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="4">No hay peliculas disponibles</td>
-                </tr>
-            @endforelse
+            <tr>
+                <td>{{ $pelicula->id }}</td>
+                <td>{{ $pelicula->titulo }}</td>
+                <td>
+                    @if ($pelicula->director)
+                        {{ $pelicula->director->nombre }} {{ $pelicula->director->apellido }}
+                    @else
+                        Esta pelicula no tiene director
+                    @endif
+                </td>
+                <td>{{ $pelicula->anio_estreno }}</td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="4">No hay películas disponibles.</td>
+            </tr>
+        @endforelse
         </tbody>
     </table>
 

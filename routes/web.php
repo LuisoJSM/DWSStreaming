@@ -5,6 +5,8 @@ use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PeliculasController;
+use App\Http\Controllers\DirectorController;
+
 
 // Rutas de frontend
 Route::get('/', [FrontEndController::class, 'inicio'])->name('inicio');
@@ -41,8 +43,24 @@ Route::get('admin/gestion-peliculas', [PeliculasController::class, 'adminPelicul
 
 //Ruta que devuelve la vista lista-peliculas
 Route::get('admin/gestion-peliculas/lista-peliculas', [PeliculasController::class, 'listaPeliculas'])->name('listaPeliculas');
-
+//Ruta para agregar películas
 Route::post('admin/gestion-peliculas', [PeliculasController::class, 'agregarPelicula'])->name('agregarPelicula');
+
+
+
+
+//RUTAS DE LA CARPETA DIRECTORES
+
+// Ruta para listar todos los directores
+Route::get('/admin/gestion-peliculas/lista-directores', [DirectorController::class, 'listaDirectores'])->name('listaDirectores');
+
+Route::get('/admin/gestion-peliculas/lista-directores-peliculas/{id}', [DirectorController::class, 'mostrarPeliculasDirector'])->name('directores.lista-directores-peliculas');
+
+
+
+
+
+
 
 
 
@@ -57,3 +75,5 @@ Route::get('admin/gestion-clientes/lista-clientes', [ClienteController::class, '
 Route::post('admin/gestion-clientes', [ClienteController::class, 'agregarCliente'])->name('agregarCliente');
 
 Route::get('admin/lista-clientes', [ClienteController::class, 'listaClientes'])->name('listaClientes');
+
+

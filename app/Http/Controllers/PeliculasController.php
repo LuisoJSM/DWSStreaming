@@ -20,16 +20,16 @@ class PeliculasController extends Controller
 
 
 
-    //Función para listar las películas
+
     public function listaPeliculas()
     {
-        // Consultar las peliculas desde la tabla "cliente"
-        $peliculas = DB::table('peliculas')->get();
-
-        // Retornar la vista 'lista-peliculas' con los datos de las peliculas
+        // Obtén las películas con su director usando Eager Loading
+        $peliculas = Pelicula::with('director')->get();
+    
+        // Retorna la vista con las películas y sus directores
         return view('peliculas.lista-peliculas', ['peliculas' => $peliculas]);
     }
-
+    
 
 
     //Esta función me devuelve una lista de películas almacenadas en mi base de datos en la vista /admin/gestion-peliculas

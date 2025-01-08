@@ -96,8 +96,16 @@
         @endif --}}
 
 
-        <button> <a href="{{ route('listaPeliculas') }}">Ver lista de Peliculas</a></button>
+      
 
+        <a href="{{ route('listaPeliculas') }}">
+            <button>Ver lista de Peliculas</button>
+        </a>
+
+
+        <a href="{{ route('listaDirectores') }}">
+            <button>Ver lista de Directores</button>
+        </a>
 
     </main>
 </body>
