@@ -44,6 +44,25 @@
                 <label for="anio_estreno">Año de estreno:</label>
                 <input type="number" id="anio_estreno" name="anio_estreno" required>
             </div>
+
+            <div>
+                <label for="isrc">Isrc:</label>
+                <input type="text" id="isrc" name="isrc" required>
+            </div>
+
+            <div>
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="pelicula">Película</option>
+                    <option value="cortometraje">Cortometraje</option>
+                    <option value="documental">Documental</option>
+                    <option value="serie">Serie</option>
+                </select>
+            </div>
+            
+
+
             <button type="submit">Agregar Película</button>
         </form>
 

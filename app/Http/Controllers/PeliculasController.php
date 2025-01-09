@@ -48,8 +48,10 @@ class PeliculasController extends Controller
             'nombre_director' => 'required|string|max:255',
             'apellido_director' => 'required|string|max:255',
             'anio_estreno' => 'required|integer|min:1800|max:' . date('Y'),
+            'isrc' => 'required|string|max:15',
+            'tipo' => 'required|string|in:pelicula,cortometraje,documental,serie', // Validación del campo tipo
         ]);
-
+    
         // Buscar o crear el director
         $director = \App\Models\Director::firstOrCreate(
             [
@@ -57,77 +59,46 @@ class PeliculasController extends Controller
                 'apellido' => $validated['apellido_director']
             ]
         );
-
-        // Crear la película en la base de datos, asociándola al director
+    
+        // Buscar o crear ISRC
+        $isrc = \App\Models\Isrc::firstOrCreate(
+            [
+                'isrc' => $validated['isrc'],
+            ],
+            [
+                'tipo' => $validated['tipo'], // Se agrega tipo si no existe
+            ]
+        );
+    
+        // Crear la película en la base de datos, asociándola al director y al ISRC
         $pelicula = Pelicula::create([
             'titulo' => $validated['titulo'],
             'director_id' => $director->id,
             'anio_estreno' => $validated['anio_estreno'],
+            'id_isrc' => $isrc->id, // Aquí se asigna el ID del ISRC
         ]);
-
+    
         // Ruta del archivo JSON donde se almacenarán las películas
         $rutaJSON = storage_path('app/peliculas.json');
-
+    
         // Leer y decodificar el contenido del archivo JSON si existe
         $peliculas = file_exists($rutaJSON) ? json_decode(file_get_contents($rutaJSON), true) : [];
-
+    
         // Añadir la nueva película al array
         $peliculas[] = [
             'titulo' => $pelicula->titulo,
             'director' => $director->nombre . ' ' . $director->apellido,
             'anio_estreno' => $pelicula->anio_estreno,
+            'isrc' => $isrc->isrc, // Opcional: agregar ISRC al JSON
             'fecha_ingreso' => now()->toDateTimeString(),
         ];
-
+    
         // Escribir el array actualizado en el archivo JSON
         file_put_contents($rutaJSON, json_encode($peliculas, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-
+    
         // Redirigir a la vista de admin con un mensaje de éxito
         return redirect()->route('adminPeliculas')->with('success', 'Has añadido una película.');
     }
+    
 
-
-
-    // //Función para añadir nuevas películas
-    // public function agregarPelicula(Request $request)
-    // {
-    //     // Primero, valido los datos enviados desde el formulario.
-    //     $validated = $request->validate([
-    //         'titulo' => 'required|string|max:255',
-    //         'director' => 'required|string|max:255',
-    //         'anio_estreno' => 'required|integer|min:1800|max:' . date('Y'),
-    //     ]);
-
-    //     // Creo la película en la base de datos.
-    //     $pelicula = Pelicula::create([
-    //         'titulo' => $validated['titulo'],
-    //         'director' => $validated['director'],
-    //         'anio_estreno' => $validated['anio_estreno'],
-    //     ]);
-
-    //     // Ruta del archivo JSON donde se almacenarán las películas.
-    //     $rutaJSON = storage_path('app/peliculas.json');
-
-    //     // Si el archivo JSON existe, leo y decodifico su contenido.
-    //     if (file_exists($rutaJSON)) {
-    //         $peliculas = json_decode(file_get_contents($rutaJSON), true);
-    //     } else {
-    //         // Si no existe, inicializo un array vacío.
-    //         $peliculas = [];
-    //     }
-
-    //     // Añadir la nueva película al array.
-    //     $peliculas[] = [
-    //         'titulo' => $pelicula->titulo,
-    //         'director' => $pelicula->director,
-    //         'anio_estreno' => $pelicula->anio_estreno,
-    //         'fecha_ingreso' => now()->toDateTimeString(), // Añadir una fecha de ingreso si es necesario.
-    //     ];
-
-    //     // Escribo el array actualizado en el archivo JSON.
-    //     file_put_contents($rutaJSON, json_encode($peliculas, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-
-    //     // Redirijo a la vista de admin con un mensaje de éxito.
-    //     return redirect()->route('adminPeliculas')->with('success', 'Has añadido una película.');
-    // }
 }

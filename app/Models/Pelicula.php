@@ -14,6 +14,7 @@ class Pelicula extends Model
         'titulo',
         'director_id', // Ahora usamos director_id en lugar de director
         'anio_estreno',
+        'id_isrc',
     ];
 
     // Relación con el modelo Director
@@ -21,4 +22,11 @@ class Pelicula extends Model
     {
         return $this->belongsTo(Director::class, 'director_id');
     }
+
+    //Relación entre isrc y película
+    public function isrc(){
+        return $this->belongsTo(Isrc::class);
+    }
+
+
 }
