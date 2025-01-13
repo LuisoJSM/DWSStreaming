@@ -24,12 +24,11 @@
 
 
 
-
         <h2>Agregar actor o actriz</h2>
         <form action="{{ route('agregarElenco') }}" method="POST">
             @csrf
             <div>
-                <label for="titulo">Nombre:</label>
+                <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
             </div>
             <div>
@@ -40,10 +39,18 @@
                 <label for="fecha_nacimiento">Año de nacimiento:</label>
                 <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
             </div>
+            <div>
+                <label for="pelicula">Película:</label>
+                <select id="pelicula" name="pelicula" required>
+                    <option value="">Seleccione una película</option>
+                    @foreach($peliculas as $pelicula)
+                        <option value="{{ $pelicula->id }}">{{ $pelicula->titulo }}</option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit">Agregar Elenco</button>
         </form>
-
-
+        
 
 
 

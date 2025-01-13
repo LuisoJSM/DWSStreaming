@@ -7,6 +7,9 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PeliculasController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\ElencoController;
+use App\Helpers\FechaHelper;
+use App\Http\Controllers\PruebasController;
+
 
 
 
@@ -39,8 +42,9 @@ Route::post('/admin/nuevocliente', [AdminController::class, 'agregarCliente'])->
 //RUTAS de la carpeta ELENCO ytodo lo que tiene que ver con ellas
 //Ruta al formulario
 Route::get('/admin/gestion-peliculas/introducir-elenco', [ElencoController::class, 'adminElenco'])->name('adminElenco');
-Route::post('admin/gestion-peliculas/introducir-elenco', [ElencoController::class, 'agregarElenco'])->name('agregarElenco');
 
+Route::get('/admin/elenco/agregar', [ElencoController::class, 'mostrarAgregarElencoFormulario'])->name('mostrarAgregarElencoFormulario');
+Route::post('/admin/elenco/agregar', [ElencoController::class, 'agregarElenco'])->name('agregarElenco');
 
 
 
@@ -90,3 +94,9 @@ Route::post('admin/gestion-clientes', [ClienteController::class, 'agregarCliente
 Route::get('admin/lista-clientes', [ClienteController::class, 'listaClientes'])->name('listaClientes');
 
 
+
+
+
+//RUTAS DE PRUEBA
+
+Route::get('/prueba-fechas', [PruebasController::class, 'ejemploParaFechasEjercicio']);
