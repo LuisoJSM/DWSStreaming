@@ -102,10 +102,14 @@ class ElencoController extends Controller
     {
         // Buscar al elenco por su ID
         $elenco = Elenco::findOrFail($id);
-    
+        // dd($elenco);
+        // dd($elenco->peliculas()->toSql());
+
         // Obtener las películas asociadas con paginación
         $peliculas = $elenco->peliculas()->paginate(5);
-    
+        // dd(vars: $peliculas);
+        // dd($elenco->peliculas()->toSql());
+
         // Retornar la vista con el elenco y las películas
         return view('elenco.lista-elenco-peliculas', [
             'elenco' => $elenco,
@@ -114,7 +118,7 @@ class ElencoController extends Controller
     }
     
 
-
+   
 
 
 }

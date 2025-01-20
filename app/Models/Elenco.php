@@ -19,5 +19,12 @@ class Elenco extends Model
         'fecha_nacimiento',
     ];
 
+public function peliculas()
+{
+    return $this->belongsToMany(Pelicula::class, 'elenco_pelicula', 'id_elenco', 'id_pelicula');
+}
+
+
+
 
 }
