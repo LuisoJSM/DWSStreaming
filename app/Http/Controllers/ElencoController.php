@@ -98,5 +98,23 @@ class ElencoController extends Controller
     
 
 
+    public function mostrarPeliculasElenco($id)
+    {
+        // Buscar al elenco por su ID
+        $elenco = Elenco::findOrFail($id);
+    
+        // Obtener las películas asociadas con paginación
+        $peliculas = $elenco->peliculas()->paginate(5);
+    
+        // Retornar la vista con el elenco y las películas
+        return view('elenco.lista-elenco-peliculas', [
+            'elenco' => $elenco,
+            'peliculas' => $peliculas
+        ]);
+    }
+    
+
+
+
 
 }
