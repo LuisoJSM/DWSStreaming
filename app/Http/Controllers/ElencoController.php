@@ -69,6 +69,23 @@ class ElencoController extends Controller
     
 
 
+    //ESTO ES NUEVO
+
+    public function listaElenco()
+    {
+        // Recupero todos los directores con paginación
+        $elenco = Elenco::paginate(10);
+
+        // Devuelvo la vista 'lista-directores' con los directores
+        return view('elenco.lista-elenco', [
+            'elenco' => $elenco
+        ]);
+    }
+
+
+
+
+
 
     public function mostrarAgregarElencoFormulario()
     {
