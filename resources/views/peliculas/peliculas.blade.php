@@ -85,6 +85,11 @@
             <button>Ver lista de Directores</button>
         </a>
 
+
+        <a href="{{ route('listaElenco') }}">
+            <button>Ver lista de Elenco</button>
+        </a>
+
     </main>
 </body>
 

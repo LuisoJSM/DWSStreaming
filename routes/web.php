@@ -47,6 +47,9 @@ Route::get('/admin/elenco/agregar', [ElencoController::class, 'mostrarAgregarEle
 Route::post('/admin/elenco/agregar', [ElencoController::class, 'agregarElenco'])->name('agregarElenco');
 
 
+Route::get('/admin/gestion-peliculas/lista-elenco', [ElencoController::class, 'listaElenco'])->name('listaElenco');
+
+Route::get('/admin/gestion-peliculas/lista-elenco-peliculas/{id}', [ElencoController::class, 'mostrarPeliculasElenco'])->name('elenco.lista-elenco-peliculas');
 
 
 
